@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CalendarioDinamico</title>
+    
+  </head>
+  <body>
+      <style>
+       
+
+      .titulo
+      {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 50px;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 100px;
+      }
+
+      table
+      {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 200px;
+      border: 1px solid black;
+      border-collapse: collapse;
+      
+      }
+
+      tr
+      {
+      border: 2px solid black;
+      border-collapse: collapse;
+      width: 70px;
+      height: 70px;
+      }
+
+      td 
+      {
+       border: 2px solid black;
+       border-collapse: collapse;
+       width: 70px;
+       height: 70px;
+       
+      }
+      
+      .domtd
+      {
+          background-color: red;
+      }
+
+      .dom
+      {
+      font-family: Arial, 'Times New Roman', Times, serif;
+      font-size: 40px;
+      font-weight: 100;
+      text-align: center;
+      color: white;
+      background-color: red;
+      }
+
+      .sedom
+      {
+      font-family: Arial, 'Times New Roman', Times, serif;
+      font-size: 30px;
+      font-weight: 100;
+      text-align: center;
+      color: white;
+      background-color: red;
+
+      }
+
+      .dia
+      {
+      font-family: Arial, 'Times New Roman', Times, serif;
+      font-size: 40px;
+      font-weight: 100;
+      text-align: center;
+      }
+
+      .sedia
+      {
+      font-family: Arial, 'Times New Roman', Times, serif;
+      font-size: 30px;
+      font-weight: 100;
+      text-align: center;
+      }
+      </style>
+      <script>
+          var umaData2, umaData, ano, mes, d, corfnt, corfdo, fim, ini;
+
+          ano = parseInt(window.prompt("Qual ano?"));
+          mes = parseInt(window.prompt("Qual mês?"));
+
+          umaData = new Date(ano, mes - 1, 1);
+
+          umaData2 = new Date(ano, mes, 1);
+          umaData2.setDate(0);
+
+          switch (mes - 1) {
+              case 0: document.write("<div class='titulo'>Janeiro / " + ano); break;
+              case 1: document.write("<div class='titulo'>Fevereiro / " + ano); break;
+              case 2: document.write("<div class='titulo'>Março / " + ano); break;
+              case 3: document.write("<div class='titulo'>Abril / " + ano); break;
+              case 4: document.write("<div class='titulo'>Maio / " + ano); break;
+              case 5: document.write("<div class='titulo'>Junho / " + ano); break;
+              case 6: document.write("<div class='titulo'>Julho / " + ano); break;
+              case 7: document.write("<div class='titulo'>Agosto / " + ano); break;
+              case 8: document.write("<div class='titulo'>Setembro / " + ano); break;
+              case 9: document.write("<div class='titulo'>Outubro / " + ano); break;
+              case 10: document.write("<div class='titulo'>Novembro / " + ano); break;
+              case 11: document.write("<div class='titulo'>Dezembro / " + ano); break;
+          }
+
+          document.write("</div>");
+          document.write("<table>");
+          document.write("<tr>");
+          document.write("<td class='domtd'> <div class='sedom'> Dom");
+          document.write("<td> <div class='sedia'> Seg");
+          document.write("<td> <div class='sedia'> Ter");
+          document.write("<td> <div class='sedia'> Qua");
+          document.write("<td> <div class='sedia'> Qui");
+          document.write("<td> <div class='sedia'> Sex");
+          document.write("<td> <div class='sedia'> Sáb");
+          document.write("<tr>");
+
+          switch (umaData.getDay()) {
+              case 0: document.write(""); break;
+              case 1: document.write("<td colspan=1>"); break;
+              case 2: document.write("<td colspan=2>"); break;
+              case 3: document.write("<td colspan=3>"); break;
+              case 4: document.write("<td colspan=4>"); break;
+              case 5: document.write("<td colspan=5>"); break;
+              case 6: document.write("<td colspan=6>"); break;
+          }
+
+          for (d = 2; d <= umaData2.getDate() + 1; ++d) {
+              if (umaData.getDay() == 0) {
+                  document.write("<tr>");
+                  document.write("<td class='domtd'>");
+                  document.write("<div class='dom'>" + umaData.getDate());
+                  document.write("</td>");
+
+                  umaData.setDate(d);
+              }
+
+              else {
+                  document.write("<td>");
+                  document.write("<div class='dia'>" + umaData.getDate());
+                  document.write("</td>");
+
+                  umaData.setDate(d);
+              }
+          }
+
+          document.write("</table>");
+          document.write("<br>");
+
+      </script>
+
+  </body>
+</html>
